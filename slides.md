@@ -1,6 +1,6 @@
 ---
 theme: seriph
-background: https://i.ytimg.com/vi/5CXQDCEZtPc/sddefault.jpg
+background: https://cdn3.emoji.gg/emojis/9355-discordpy.png
 title: 《React 思維進化》簡報
 info: |
   ## 關於這份簡報
@@ -16,11 +16,9 @@ transition: slide-left
 mdc: true
 ---
 
-# React 思維進化讀書會
+# 用 Python 打造你的 Discord BOT
 
-## 2-7 ~ 2-9
-
-2025.03.18
+## 從指令到 UI 元件互動
 
 ---
 
@@ -33,45 +31,16 @@ mdc: true
   - 2023 Software Development 組 「FastAPI 開發筆記：從新手到專家的成長之路」
 
 ---
+layout: iframe-right
 
-# 前情提要
+# the web page source
+url: https://discord.com/channels/@me
 
-- DOM vs. vDOM
-- React Element
-- JSX
-- 單向資料流 與 一律重繪
+# a custom class name to the content
+class: my-cool-content-on-the-left
+---
 
-<br><br><br>
-
-<v-click>
-
-<div class="text-center">
-
-## Component
-
-</div>
-
-</v-click>
-
-<br>
-
-<v-click>
-
-<div class="text-center">
-
-### 2-7 畫面組裝的藍圖：component 初探
-### 2-8 React 畫面更新的發動機：state 初探
-### 2-9 React 畫面更新的流程機制：reconciliation
-
-</div>
-
-</v-click>
-
-<!-- 
-- [click] 導入一個新的概念，叫做 component
-- [click] 在 2-7 會簡單介紹什麼是 component，以及如何透過 props，將外部參數傳入到 component 內
-- 接著，在 2-8 會介紹什麼是 state，以及在 component 內，如何用 state 做資料狀態管理與畫面更新
-- 最後，在 2-9 會以 component 的角度，再完整地走過一次 React 畫面更新的流程機制 -->
+# 123
 
 
 ---
@@ -82,44 +51,61 @@ class: flex justify-center items-center
 # 2-7 畫面組裝的藍圖：component 初探
 
 ---
-layout: two-cols
----
 
-# 什麼是 Component
+# 最基本的 Discord BOT 範例
 
-<v-click>
+ping pong
 
-- 由開發者自定義的畫面元件藍圖
-- 可重用的程式碼片段
-
-</v-click>
-
-<v-click>
-
-## 抽象化
-- 根據需求，將關心的特徵與行為歸納出來
-- 將實作細節或複雜性封裝在內部
-- 通用性、重用性
-
-</v-click>
-
-::right::
-
-<br><br><br><br><br><br>
-
-<v-click>
-
-![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*wmRD7YIgQsWEt8PBa1dIyQ.png)
-<span class="opacity-30 text-xs">https://sam-j.medium.com/react-component-structure-d38d59eefffd</span>
-
-</v-click>
-
+左邊程式碼，右邊 discord 網頁
 
 ---
 
-# 定義 Component
+# 基本的 command
 
+---
 
+# Slash Command
+
+---
+
+# Slash command 可以帶參數
+
+加上型別
+
+範圍
+
+---
+
+# Slash Command 設定選項
+
+---
+
+# User Command 與 Message Command
+
+只有一個參數，選項是 User 或 Message
+
+---
+
+# 按鈕
+
+簡單範例
+
+---
+
+# 下拉選單
+
+簡單範例
+
+---
+
+# Modal
+
+簡單範例
+限制
+
+---
+
+# 思考中 輸入中
 
 
 ---
