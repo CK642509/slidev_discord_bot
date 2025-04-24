@@ -1,5 +1,5 @@
 ---
-theme: seriph
+theme: default
 background: https://cdn3.emoji.gg/emojis/9355-discordpy.png
 title: 《React 思維進化》簡報
 info: |
