@@ -24,7 +24,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="slidev-layout two-cols w-full h-full" :class="layoutClass">
+  <div class="slidev-layout two-columns w-full h-full grid" :class="props.layoutClass"
+    style="grid-template-columns: 5fr 7fr;">
     <div class="col-left" :class="props.class">
       <slot />
     </div>
@@ -33,19 +34,3 @@ const props = defineProps({
     </div>
   </div>
 </template>
-
-<style scoped>
-.two-cols {
-  display: grid;
-  /* grid-template-columns: repeat(2, 1fr); */
-  grid-template-columns: 5fr 7fr;
-  grid-template-rows: repeat(2, 1fr);
-}
-
-.col-left {
-  grid-area: 2 / 1 / 3 / 2;
-}
-.col-right {
-  grid-area: 2 / 2 / 3 / 3;
-}
-</style>
