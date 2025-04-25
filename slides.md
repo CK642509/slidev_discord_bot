@@ -259,6 +259,7 @@ async def order(
 ````
 
 <!--
+- 這邊有省略掉一些東西
 - 有三種寫法
 - ## Demo
 -->
@@ -495,6 +496,9 @@ layout: two-cols
 
 ::right::
 
+<br>
+<br>
+
 ````md magic-move {lines: true}
 ```python {*|9-19}
 import discord
@@ -714,23 +718,154 @@ bot.run("token")
 -->
 
 ---
-layout: two-cols
+layout: TwoCols57
 ---
 
 # 互動視窗 Modal
 
 <br>
 
+<div class="w-70">
+
 ![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F17_demo_01.png?alt=media&token=486349db-6af1-4c0e-b97d-750cf51edd0f)
 
+</div>
+
+<v-click>
+
+<div class="w-70">
+
+![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F17_demo_02.png?alt=media&token=030dd0a9-7d93-4727-932d-0158ca58cf2c)
+
+</div>
+
+</v-click>
+
+::right::
+
+<br>
+<br>
+<br>
+
+````md magic-move {lines: true}
+```python
+import discord
+
+
+class Questionnaire(discord.ui.Modal, title="Questionnaire Response"):
+    name = discord.ui.TextInput(label="Name")
+    answer = discord.ui.TextInput(
+        label="Answer",
+        style=discord.TextStyle.paragraph
+    )
+
+    async def on_submit(self, interaction: discord.Interaction):
+        await interaction.response.send_message(
+            f"Thanks for your response, {self.name}!",
+            ephemeral=True
+        )
+
+@bot.tree.command()
+async def ping(interaction: discord.Interaction):
+    await interaction.response.send_modal(Questionnaire())
+```
+````
+
+<!-- 
+- 展示 Modal 範例 + 說明 code
+  - label (str)：標籤，也就是這個 Text Input 的標題
+  - style (discord.TextStyle)：風格，只有兩種，分成 short 和 paragraph (long) (可以參考文件)
+  - placeholder (str)：提示文字
+  - default (str)：預設值
+  - required (bool)：是否為必填 (預設為 True)
+  - min_length (int)：至少要輸入的字串長度 (0 到 4000)
+  - max_length (int)：至多能輸入的字串長度 (1 到 4000)
+  - row (int)：排序編號。一個 Modal 至多只能有 5 個 Text Input，所以 row 必須介於 0 到 4 之間，而且不能重複。(沒設定的話，就會依照程式碼的順序排列)
+- [click] 送出之後就會觸發 `on_submit`
+- 解釋 ephemeral ( *əˈfem(ə)rəl* )
+-->
+
+---
+layout: two-cols
 ---
 
-# 思考中 輸入中
+# 狀態提示
 
+- 提示使用者 Discord BOT 正在處理中
+  - 正在輸入...
+  - 正在思考...
+
+<div class="w-100">
+
+![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F16_typing.png?alt=media&token=be2056eb-da77-47c9-bbba-4dd4ac34bbd7)
+
+</div>
+
+<br>
+
+<div class="w-100">
+
+![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F30_defer_01.png?alt=media&token=843a0b6c-c719-4276-90d7-c88d66905dc9)
+
+</div>
+
+::right::
+
+<br>
+<br>
+<br>
+
+<v-click>
+
+````md magic-move {lines: true}
+```python
+@bot.command()
+async def ping(ctx: commands.Context):
+    await ctx.typing()
+    await asyncio.sleep(5)
+    await ctx.send('pong')
+```
+````
+
+<br>
+
+````md magic-move {lines: true}
+```python
+@bot.command()
+async def ping(ctx: commands.Context):
+    async with ctx.typing():
+        await asyncio.sleep(5)
+    await ctx.send('pong')
+```
+````
+
+</v-click>
+
+<br>
+
+<v-click>
+
+````md magic-move {lines: true}
+```python
+@app_commands.command()
+async def exchange(self, interaction: Interaction):
+    await interaction.response.defer()
+    await asyncio.sleep(5)
+    await interaction.followup.send("計算完成！")
+```
+````
+
+</v-click>
+
+<!--
+- 平常在使用 APP 或網頁會有 Loading 畫面或提示，Discord BOT 也可以做到類似的狀態提示
+  - 有兩種，
+- 如果是 Interaction
+- ## Demo 
+-->
 
 ---
 class: flex justify-center items-center
-
 ---
 
 # Thank you
