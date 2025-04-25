@@ -236,7 +236,7 @@ layout: two-cols-header
 from discord.app_commands import Choice
 
 
-@client.tree.command(description="點餐")
+@bot.tree.command(description="點餐")
 @app_commands.choices(tea=[
     Choice(name='綠茶', value='green_tea'),
     Choice(name='紅茶', value='black_tea'),
@@ -283,7 +283,7 @@ layout: two-cols-header
 from typing import Literal
 
 
-@client.tree.command(description="點餐")
+@bot.tree.command(description="點餐")
 async def order(
     interaction: discord.Interaction,
     tea: Literal["綠茶", "紅茶", "奶茶"],
@@ -314,7 +314,7 @@ class Size(Enum):
     medium = "中杯"
     large = "大杯"
 
-@client.tree.command(description="點餐")
+@bot.tree.command(description="點餐")
 async def order(
     interaction: discord.Interaction,
     tea: Tea,
@@ -346,7 +346,7 @@ layout: two-cols
 from typing import Literal
 
 
-@client.tree.command(description="點餐")
+@bot.tree.command(description="點餐")
 async def order(
     interaction: discord.Interaction,
     tea: Literal["綠茶", "紅茶", "奶茶"],
@@ -361,7 +361,7 @@ async def order(
 from typing import Literal
 
 
-@client.tree.command(description="點餐")
+@bot.tree.command(description="點餐")
 async def order(
     interaction: discord.Interaction,
     tea: Literal["綠茶", "紅茶", "奶茶"],
