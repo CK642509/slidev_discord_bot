@@ -22,12 +22,11 @@ mdc: true
 ---
 
 # 上竣
-- 非本科系 (農業化學系、生醫電資所)
-- ~ 3 年年資
 - AI 新創公司，全端開發 (Vue + Python)
-- iThome 鐵人賽
-  - 2024 Python 組 「用 Python 打造你的 Discord BOT」 佳作
-  - 2023 Software Development 組 「FastAPI 開發筆記：從新手到專家的成長之路」
+- 生物研究 --> 為了加速實驗數據分析而接觸 Python
+  - 資料處理
+  - 自動化工具
+- Discord 遊戲群組的需求 --> 開始研究 Discord BOT
 
 
 ---
@@ -38,46 +37,252 @@ class: flex justify-center items-center
 # Discord BOT 簡介
 
 ---
+layout: two-cols
+---
 
-# 最基本的 Discord BOT 範例
+# 最基本的 Discord BOT
 
-ping pong
+<div class="mr-8">
 
-左邊程式碼，右邊 discord 網頁
+````md magic-move {lines: true}
+```python
+import discord
+
+intents = discord.Intents.default()
+intents.message_content = True
+client = discord.Client(intents=intents)
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    if message.content == 'ping':
+        await message.channel.send('pong')
+
+client.run('token')
+```
+````
+
+</div>
+
+::right::
+
+<br>
+<br>
+
+<v-click>
+
+````md magic-move {lines: true}
+```python
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='', intents=intents)
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
+
+bot.run('token')
+```
+````
+
+</v-click>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<v-click>
+<div class="text-center">
+
+### 指令 (Command)
+
+</div>
+</v-click>
+
+<!-- 
+- ## Demo
+  - ### 輸入：ping
+  - ### 輸出：pong
+- 這是一個最簡單的 discord BOT，長這樣
+  - 稍微解釋
+  - 提到指令
+- [click] 如果你的 discord BOT 大部分功能都是這類的指令，可以考慮使用 discord.py 提供的 bot 指令框架，讓我們可以更容易去開發，程式碼長這樣
+  - 稍微解釋
+  - prefix 的目的 (有可能會不小心觸發，所以通常會在前面加一個前墜)
+
+當然，如果是要針對其他事件，例如修改訊息，那還是要回去使用第一個寫法就是了
+另外，補充一下，其實還有一個 cog 的寫法，但這邊礙於時間的關係就不多做介紹了。
+接下來的範例會以 bot 指令框架的寫法為主 -->
 
 ---
 class: flex justify-center items-center
-
 ---
 
 # 指令 Command
 
 ---
+layout: two-cols
+---
 
 # 基本的 command
 
+````md magic-move {lines: true}
+```python {*|8-10}
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='', intents=intents)
+
+@bot.command()
+async def greet(ctx):
+    await ctx.send('hello')
+
+bot.run('token')
+```
+
+```python {8-10}
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='', intents=intents)
+
+@bot.command()
+async def greet(ctx, name):
+    await ctx.send(f'hello {name}')
+
+bot.run('token')
+```
+
+```python {8-10}
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='', intents=intents)
+
+@bot.command()
+async def greet(ctx, name1, name2):
+    await ctx.send(f'hello {name1} and {name2}')
+
+bot.run('token')
+```
+````
+
+<!--
+- 根據上一個範例，這邊只要輸入 greet，就會得到 hello
+- ## Demo
+  - ### 輸入：greet 小明 小王
+  - ### 輸出：hello 小明 小王
+-->
+
+
+---
+layout: two-cols
 ---
 
-# Slash Command
+# 斜線指令 Slash Command
 
-- 可以帶參數
-- 基礎的範例
+更高級的指令
+
+- 有自己獨立的界面
+- 有說明引導
+- 可以設定選項
+- 可以設定範圍
+- 屬於互動 (Interaction) --> 可以串接 UI 界面
+
+::right::
+
+<br>
+<br>
+<br>
+
+<img
+    src="https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F07_default.png?alt=media&token=9d6134cf-6097-43ad-a7d6-49f1ee13bb7f"
+    alt=""
+/>
+
+
 
 ---
-# layout: TwoColumn57
 layout: two-cols-header
 ---
 
-# Slash Command
-
-- 可以幫參數設選項
+# 斜線指令 Slash Command
 
 ::left::
 
+- 可以設定選項
+  - Choice
+  - Literal
+  - Enum
+
+![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F10_literal_02-2.png?alt=media&token=38e5561f-647d-452b-aae6-337e5931d8c0)
+
+::right::
+
+````md magic-move {lines: true}
+```python
+from discord.app_commands import Choice
+
+
+@client.tree.command(description="點餐")
+@app_commands.choices(tea=[
+    Choice(name='綠茶', value='green_tea'),
+    Choice(name='紅茶', value='black_tea'),
+    Choice(name='奶茶', value='milk_tea'),
+])
+@app_commands.choices(size=[
+    Choice(name='小杯', value='small'),
+    Choice(name='中杯', value='medium'),
+    Choice(name='大杯', value='large'),
+])
+async def order(
+    interaction: discord.Interaction,
+    tea: Choice[str],
+    size: Choice[str],
+):
+    await interaction.response.send_message(
+        f"點餐結果：{tea.name}{size.name}"
+    )
+```
+````
+
+<!--
+- 有三種寫法
+- ## Demo
+-->
+
+---
+layout: two-cols-header
+---
+
+# 斜線指令 Slash Command
+
+::left::
+
+- 可以設定選項
+  - Choice
+  - Literal
+  - Enum
+
 <div class="mr-4">
 
+````md magic-move {lines: true}
 ```python
 from typing import Literal
+
 
 @client.tree.command(description="點餐")
 async def order(
@@ -89,12 +294,16 @@ async def order(
         f"點餐結果：{tea}{size}"
     )
 ```
+````
 
 </div>
 
 ::right::
+
+````md magic-move {lines: true}
 ```python
 from enum import Enum
+
 
 class Tea(Enum):
     green_tea = "綠茶"
@@ -116,13 +325,82 @@ async def order(
         f"點餐結果：{tea.value}{size.value}"
     )
 ```
+````
+
+<!--
+- 其他兩種寫法
+- 不 Demo
+-->
 
 ---
+layout: two-cols
+---
 
-# Slash Command
+# 斜線指令 Slash Command
 
-- 可以幫參數設定範圍
-- 範例
+- 可以設定範圍
+
+<div class=mr-8>
+
+````md magic-move {lines: true}
+```python
+from typing import Literal
+
+
+@client.tree.command(description="點餐")
+async def order(
+    interaction: discord.Interaction,
+    tea: Literal["綠茶", "紅茶", "奶茶"],
+    size: Literal["大杯", "中杯", "小杯"],
+):
+    await interaction.response.send_message(
+        f"點餐結果：{tea}{size}"
+    )
+```
+
+```python
+from typing import Literal
+
+
+@client.tree.command(description="點餐")
+async def order(
+    interaction: discord.Interaction,
+    tea: Literal["綠茶", "紅茶", "奶茶"],
+    size: Literal["大杯", "中杯", "小杯"],
+    number: Range[int, 1, 10],
+):
+    await interaction.response.send_message(
+        f"點餐結果：{tea}{size} {number}杯"
+    )
+```
+````
+
+</div>
+
+::right::
+
+<br>
+<br>
+<br>
+
+<v-click>
+
+![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F10_range_01.png?alt=media&token=1daf9ae1-97b0-441b-b2c8-54787328282d)
+
+</v-click>
+
+<v-click>
+
+![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F10_range_02.png?alt=media&token=8cd91346-aad7-4e0e-9490-32983a7a15fa)
+
+</v-click>
+
+<!--
+- 有些東西不適合/沒辦法全部列出來
+- ## Demo
+  - ### 正確使用
+  - ### 錯誤使用 (有錯誤提示)
+-->
 
 ---
 
