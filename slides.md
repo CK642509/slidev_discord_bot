@@ -865,7 +865,30 @@ async def exchange(self, interaction: Interaction):
 -->
 
 ---
-class: flex justify-center items-center
----
+
+<br>
+<br>
+
+<div class="flex justify-center">
 
 # Thank you
+
+</div>
+
+<br>
+
+<div class="flex justify-center">
+    <img
+        class="w-70"
+        src="/qrcode.png"
+        alt=""
+    />
+</div>
+
+<br>
+
+<div class="flex justify-center">
+
+## 簡報連結
+
+</div>
