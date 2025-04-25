@@ -200,7 +200,6 @@ layout: two-cols
 - 有說明引導
 - 可以設定選項
 - 可以設定範圍
-- 屬於互動 (Interaction) --> 可以串接 UI 界面
 
 ::right::
 
@@ -422,8 +421,6 @@ layout: two-cols
 
 # 按鈕
 
-動畫順序要再改
-
 <br>
 
 <img
@@ -433,12 +430,17 @@ layout: two-cols
 
 ::right::
 
+<br>
+<br>
+<br>
+
 <v-click>
 
 ````md magic-move {lines: true}
-```python {*|8-13|*}
+```python {*|9-14}
 import discord
 from discord.ext import commands
+
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -454,9 +456,10 @@ async def ping(ctx: commands.Context):
 bot.run("token")
 ```
 
-```python {*|8,9,15|8-17|*}
+```python {9-18|9,10,16}
 import discord
 from discord.ext import commands
+
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -479,38 +482,24 @@ bot.run("token")
 
 </v-click>
 
-<v-switch>
-  <template #1>
-    <img
-      src="https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F14_view_01.png?alt=media&token=778092b7-a3bf-48a0-928d-b3a60d20c246"
-      alt=""
-    />
-  </template>
-  <template #2>
-    <img
-      src="https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F14_view_02.png?alt=media&token=29f0a389-d5d1-4187-be6a-a2989884eb0f"
-      alt=""
-    />
-  </template>
-  <template #3>
-    <img
-      src="https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F14_view_03.png?alt=media&token=65ef25c0-b4a6-4e2b-a94e-17a93cf1da91"
-      alt=""
-    />
-  </template>
-</v-switch>
+
 
 <!-- 需要注意的是，只能是 interaction -->
 
+---
+layout: two-cols
 ---
 
 # 按鈕
 另一種寫法：class
 
+::right::
+
 ````md magic-move {lines: true}
-```python {*|8-16|*}
+```python {*|9-19}
 import discord
 from discord.ext import commands
+
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -519,7 +508,9 @@ bot = commands.Bot(command_prefix="", intents=intents)
 class MyView(discord.ui.View):
     def __init__(self):
         super().__init__()
-        self.add_item(discord.ui.Button(label="我是按鈕"))
+        self.add_item(
+            discord.ui.Button(label="我是按鈕")
+        )
 
 @bot.command()
 async def ping(ctx: commands.Context):
@@ -529,9 +520,10 @@ async def ping(ctx: commands.Context):
 bot.run("token")
 ```
 
-```python {*|8-14}
+```python {9-26}
 import discord
 from discord.ext import commands
+
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -542,8 +534,14 @@ class MyView(discord.ui.View):
         super().__init__()
     
     @discord.ui.button(label="我是按鈕")
-    async def on_click(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.send_message("點擊了按鈕")
+    async def on_click(
+        self,
+        interaction: discord.Interaction,
+        button: discord.ui.Button
+    ):
+        await interaction.response.send_message(
+            "點擊了按鈕"
+        )
 
 @bot.command()
 async def ping(ctx: commands.Context):
@@ -560,16 +558,22 @@ bot.run("token")
 
 小技巧
 
-- 樣式
 - 編輯訊息
+- 樣式
 
+<div class="flex justify-center">
 <img
     class="w-150"
     src="https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F14_btn_styles.png?alt=media&token=264b941e-85cc-44ae-b996-92110bcdbb28"
     alt=""
 />
-<span class="opacity-30 text-xs">https://discord.com/developers/docs/components/reference#button-object</span>
+</div>
 
+<br>
+
+<div class="flex justify-center">
+<span class="opacity-30 text-xs">https://discord.com/developers/docs/components/reference#button-object</span>
+</div>
 
 <!-- 後續可以串接的功能很多，大家可以自由發揮，這邊舉幾個例子：
 1. 確認/取消按鈕，來決定是不是真的要執行
@@ -582,12 +586,22 @@ layout: TwoCols57
 
 # 下拉選單
 
-簡單範例
+<br>
+
+- String Select
+
+<br>
+
+<div class="mr-4">
+
+![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F15_select_02.png?alt=media&token=869dde9a-a56e-499e-80fb-6a912a8d64be)
+
+</div>
 
 ::right::
 
 ````md magic-move {lines: true}
-```python {*|8-24|*}
+```python {*|8-24}
 import discord
 from discord.ext import commands
 
@@ -616,6 +630,11 @@ async def ping(ctx: commands.Context):
 bot.run("token")
 ```
 ````
+
+<!--
+- 按鈕有時候不適合放太多，這時候可以考慮改用下拉式選單
+- ## Demo
+-->
 
 ---
 layout: TwoCols57
@@ -689,12 +708,20 @@ bot.run("token")
 ```
 ````
 
+<!--
+- 除了自己定義選項之外，discord.py 也有幾個幫忙定義好選項的下拉式選單，包含...
+- ## Demo
+-->
+
+---
+layout: two-cols
 ---
 
-# Modal
+# 互動視窗 Modal
 
-簡單範例
-限制
+<br>
+
+![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F17_demo_01.png?alt=media&token=486349db-6af1-4c0e-b97d-750cf51edd0f)
 
 ---
 
