@@ -1,6 +1,5 @@
 ---
 theme: default
-background: https://cdn3.emoji.gg/emojis/9355-discordpy.png
 title: 用 Python 打造高互動性的 Discord BOT
 info: |
   ## 關於這份簡報
@@ -18,6 +17,19 @@ mdc: true
 ---
 
 # 用 Python 打造高互動性的 Discord BOT
+
+<div class="flex justify-center">
+    <img
+        class="w-30 mx-8"
+        src="/python.png"
+        alt=""
+    />
+    <img
+        class="w-30 mx-8"
+        src="/discord.png"
+        alt=""
+    />
+</div>
 
 ---
 
