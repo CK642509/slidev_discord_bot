@@ -53,6 +53,48 @@ class: flex justify-center items-center
 ---
 
 # Discord BOT 簡介
+---
+layout: two-cols
+---
+
+# Discord
+
+- 通訊軟體
+  - 原本是遊戲的交流系統
+  - 社群
+
+- 特色
+  - 伺服器
+  - 頻道
+  - 身分組 (權限)
+
+<br>
+
+<v-click>
+
+- 多元的第三方擴充 (BOT)
+
+</v-click>
+
+::right::
+
+<br>
+<br>
+
+![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F01_discord.jfif?alt=media&token=bf174224-a55d-4db0-818b-3b6d664c2589)
+
+<!-- 
+- Discord 本質上是一個通訊軟體
+  - 可以傳輸文字、圖片、語音，也可以做直播、多人會議等功能
+- 是由遊戲的交流系統轉變過來的
+- 後來因為免費又好用，所以近年來有越來越多社群開始在 Discord 上經營
+- Discord 之所以好用，除了通訊軟體本身做的功能做的完整之外，還有許多特色
+  - (簡單介紹)
+- 不過，我覺得最重要的是它有非常多元的第三方擴充應用程式，也就是我們俗稱的機器人
+  - 大家可以自己依據自己所需，去找尋合適的機器人來幫助完善自己的伺服器或是社群
+  - 如果真的沒有，也可以自行開發
+-->
+
 
 ---
 layout: two-cols
