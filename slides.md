@@ -31,14 +31,20 @@ mdc: true
     />
 </div>
 
----
-
-# 上竣
+<!-- # 上竣
 - AI 新創公司，全端開發 (Vue + Python)
-- 生物研究 --> 為了加速實驗數據分析而接觸 Python
+- 生物研究 -> 為了加速實驗數據分析而接觸 Python
   - 資料處理
   - 自動化工具
-- Discord 遊戲群組的需求 --> 開始研究 Discord BOT
+- Discord 遊戲群組的需求 -> 開始研究 Discord BOT -->
+
+---
+
+# 大綱
+- Discord BOT
+- 指令
+- UI 元件互動
+- 狀態提示
 
 
 ---
