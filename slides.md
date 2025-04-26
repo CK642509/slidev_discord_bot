@@ -200,7 +200,8 @@ bot.run('token')
 
 <!--
 - 根據上一個範例，這邊只要輸入 greet，就會得到 hello
-- ## Demo
+- ## Demo 1
+  - `$greet`
   - ### 輸入：greet 小明 小王
   - ### 輸出：hello 小明 小王
 -->
@@ -279,7 +280,11 @@ async def order(
 <!--
 - 這邊有省略掉一些東西
 - 有三種寫法
-- ## Demo
+- ## Demo 2-1 早安午安
+  - `/goodmorning`
+  - `/晚安`
+- ## Demo 2-2 order
+  - `/order`
 -->
 
 ---
@@ -415,7 +420,8 @@ async def order(
 
 <!--
 - 有些東西不適合/沒辦法全部列出來
-- ## Demo
+- ## Demo 2-3
+  - /order_v2
   - ### 正確使用
   - ### 錯誤使用 (有錯誤提示)
 -->
@@ -424,8 +430,41 @@ async def order(
 
 # User Command 與 Message Command
 
+
+````md magic-move {lines: true}
+```python {*|1,2,12,13|1,5,12,16|*}
+# User Command
+@bot.tree.context_menu(name="顯示加入時間")
+async def show_join_date(
+    interaction: discord.Interaction,
+    member: discord.Member
+):
+    await interaction.response.send_message(
+        f"{member} joined at {discord.utils.format_dt(member.joined_at)}",
+        ephemeral=True,
+    )
+
+# Message Command
+@bot.tree.context_menu(name="檢舉內容")
+async def report_message(
+    interaction: discord.Interaction,
+    message: discord.Message
+):
+    await interaction.response.send_message(
+        f"收到 {message.author.mention} 對這個訊息的檢舉",
+        ephemeral=True,
+    )
+```
+````
+
+<!--
 - 只有一個參數，選項是 User 或 Message
-- 各一個範例
+- command -> context_menu
+- ## Demo 3-1
+  - show_join_date
+- ## Demo 3-2
+  - report_message
+-->
 
 ---
 class: flex justify-center items-center
@@ -514,9 +553,6 @@ layout: two-cols
 
 ::right::
 
-<br>
-<br>
-
 ````md magic-move {lines: true}
 ```python {*|9-19}
 import discord
@@ -574,6 +610,13 @@ bot.run("token")
 ```
 ````
 
+<!-- - ## Demo 4-1
+  - `$button`
+  - 可以反覆觸發
+- ## Demo 4-2
+  - `$button_v2`
+  - 樣式調整、編輯訊息 -->
+
 ---
 
 # 按鈕
@@ -600,7 +643,14 @@ bot.run("token")
 <!-- 後續可以串接的功能很多，大家可以自由發揮，這邊舉幾個例子：
 1. 確認/取消按鈕，來決定是不是真的要執行
 2. 提供多個選項讓使用者選擇，就像 midjourney 
-3. 如果後續有要再繼續追問，可以用編輯訊息的方式 -->
+3. 如果後續有要再繼續追問，可以用編輯訊息的方式
+
+- ## Demo 4-1
+  - `$button`
+    - 可以反覆觸發
+  - `$button_v2`
+    - 樣式調整、編輯訊息 
+-->
 
 ---
 layout: TwoCols57
@@ -655,7 +705,6 @@ bot.run("token")
 
 <!--
 - 按鈕有時候不適合放太多，這時候可以考慮改用下拉式選單
-- ## Demo
 -->
 
 ---
@@ -732,7 +781,11 @@ bot.run("token")
 
 <!--
 - 除了自己定義選項之外，discord.py 也有幾個幫忙定義好選項的下拉式選單，包含...
-- ## Demo
+- ## Demo 4-2
+  - `$select`
+    - 可以反覆觸發
+  - `$select_v2`
+    - 各種選單都有 
 -->
 
 ---
@@ -801,6 +854,8 @@ async def ping(interaction: discord.Interaction):
   - row (int)：排序編號。一個 Modal 至多只能有 5 個 Text Input，所以 row 必須介於 0 到 4 之間，而且不能重複。(沒設定的話，就會依照程式碼的順序排列)
 - [click] 送出之後就會觸發 `on_submit`
 - 解釋 ephemeral ( *əˈfem(ə)rəl* )
+- ## Demo 4-3
+  - `/午餐問卷調查`
 -->
 
 ---
@@ -879,7 +934,9 @@ async def exchange(self, interaction: Interaction):
 - 平常在使用 APP 或網頁會有 Loading 畫面或提示，Discord BOT 也可以做到類似的狀態提示
   - 有兩種，
 - 如果是 Interaction
-- ## Demo 
+- ## Demo 5
+  - `$typing`
+  - `/思考`
 -->
 
 ---
