@@ -426,6 +426,8 @@ async def order(
 ```python
 from typing import Literal
 
+from discord.app_commands import Range
+
 
 @bot.tree.command(description="點餐")
 async def order(
@@ -500,12 +502,16 @@ async def report_message(
 ````
 
 <!--
-- 只有一個參數，選項是 User 或 Message
-- command -> context_menu
+- 針對伺服器成員或訊息
+
 - ## Demo 3-1
   - show_join_date
 - ## Demo 3-2
   - report_message
+
+- 只有一個參數，選項是 User 或 Message
+- command -> context_menu
+- 解釋 ephemeral ( *əˈfem(ə)rəl* )
 -->
 
 ---
@@ -581,10 +587,6 @@ bot.run("token")
 ````
 
 </v-click>
-
-
-
-<!-- 需要注意的是，只能是 interaction -->
 
 ---
 layout: two-cols
@@ -975,11 +977,30 @@ async def exchange(self, interaction: Interaction):
 <!--
 - 平常在使用 APP 或網頁會有 Loading 畫面或提示，Discord BOT 也可以做到類似的狀態提示
   - 有兩種，
-- 如果是 Interaction
+- 如果是 Interaction，都可以
+  - `interaction.channel.typing()`
+  - `interaction.response.defer()`
 - ## Demo 5
   - `$typing`
   - `/思考`
 -->
+
+---
+
+# 回顧
+
+- 指令
+  - 基本的指令
+  - 斜線指令 (Slash Command)
+  - 使用者指令 (User Command)
+  - 訊息指令 (Message Command)
+- 圖形化介面
+  - 按鈕 (Button)
+  - 下拉選單 (Select)
+  - 互動視窗 (Modal)
+- 狀態提示
+  - 正在輸入...
+  - 正在思考...
 
 ---
 
