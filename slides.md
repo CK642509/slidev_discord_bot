@@ -105,11 +105,7 @@ layout: two-cols
 
 <br>
 
-<v-click>
-
 - 多元的第三方擴充 (BOT)
-
-</v-click>
 
 ::right::
 
@@ -1044,7 +1040,7 @@ async def exchange(self, interaction: Interaction):
 
 ---
 
-# 回顧
+# 快速回顧
 
 - 指令
   - 基本的指令
@@ -1167,6 +1163,47 @@ class: flex justify-center items-center
 ---
 
 # 應用
+
+---
+layout: two-cols
+---
+
+# 線索機器人
+
+<br>
+
+<v-click>
+
+- 原本的流程
+  1. 每人每天回報「線索」的資訊
+  2. 程式計算交換作法
+  3. 公告計算結果
+
+</v-click>
+
+<br>
+
+<v-click>
+
+- 優化的流程
+  1. 每人每天回報「線索」的資訊
+  2. Discord BOT 收集每個人回報的資訊    
+  3. Discord BOT 呼叫程式計算交換作法
+  4. Discord BOT 公告計算結果
+
+</v-click>
+
+::right::
+
+<br>
+<br>
+
+<div class="flex justify-center">
+  <img
+    src="https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F27_clue.png?alt=media&token=dccc518d-0bba-4f3b-bc2b-3f1b6c1dc6ee"
+    alt=""
+  />
+</div>
 
 ---
 
