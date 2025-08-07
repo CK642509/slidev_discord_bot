@@ -31,6 +31,10 @@ mdc: true
     />
 </div>
 
+<br>
+
+### 林上竣
+
 <!--
 - 大家好，我是上竣，很高興今天能來的 ithome 鐵人講堂進行分享
 我目前在一間 AI 新創公司做全端開發，閒暇之餘也有在幫忙維護朋友 Discord 伺服器的機器人，所以今天要跟分享的主題是 OOO
@@ -40,6 +44,32 @@ mdc: true
   - 資料處理
   - 自動化工具
 - Discord 遊戲群組的需求 -> 開始研究 Discord BOT -->
+
+---
+layout: TwoCols84
+---
+
+# 林上竣 John
+
+- 背景
+  - 農業化學系
+  - 生醫電子與資訊學研究所
+- 資歷
+  - 3 年全端工程師
+    - AI 新創公司，全端開發 (Vue + Python)
+- iThome 鐵人賽
+  - 2024 Python 組 「用 Python 打造你的 Discord BOT」 佳作
+  - 2023 Software Development 組 「FastAPI 開發筆記：從新手到專家的成長之路」
+  
+::right::
+
+<div class="flex justify-center">
+    <img
+        class="w-65"
+        src="/photo.jpg"
+        alt=""
+    />
+</div>
 
 ---
 
