@@ -75,9 +75,11 @@ layout: TwoCols84
 
 # 大綱
 - Discord BOT
-- 指令
-- UI 元件互動
-- 狀態提示
+  - 指令
+  - UI 元件互動
+  - 狀態提示
+- 部屬
+- 應用
 
 
 ---
@@ -128,6 +130,28 @@ layout: two-cols
   - 如果真的沒有，也可以自行開發
 -->
 
+---
+layout: two-cols
+---
+
+# 註冊 Discord BOT
+
+- Discord Developers
+- 步驟：
+  1. 建立新 Application，並調整權限
+  2. 取得 Token
+  3. 建立邀請連結，邀請 Discord BOT 加入伺服器
+
+::right::
+
+<br>
+<br>
+
+![](https://firebasestorage.googleapis.com/v0/b/images-7e754.appspot.com/o/ithome_2024%2F02_signup_01.png?alt=media&token=65905a8b-b584-45dc-84dc-0d09b5542702)
+
+<div class="flex justify-center">
+<span class="opacity-30 text-xs">https://discord.com/developers/applications</span>
+</div>
 
 ---
 layout: two-cols
@@ -1034,6 +1058,115 @@ async def exchange(self, interaction: Interaction):
 - 狀態提示
   - 正在輸入...
   - 正在思考...
+
+---
+class: flex justify-center items-center
+
+---
+
+# 部屬
+
+---
+layout: two-cols
+---
+
+# 部屬
+
+<div class="flex justify-center">
+  <img
+    class="w-25"
+    src="/laptop.png"
+    alt=""
+  />
+</div>
+
+<div class="flex justify-center">
+  <a href="https://www.flaticon.com/free-icons/computer" title="computer icons" class="opacity-20 text-[8px]">
+    Computer icons created by Freepik - Flaticon
+  </a>
+</div>
+
+<br>
+
+<div class="flex justify-center text-3xl">
+  本地
+</div>
+
+
+
+::right::
+
+<br>
+<br>
+
+<div class="flex justify-center">
+  <img
+    class="w-25"
+    src="/server.png"
+    alt=""
+  />
+</div>
+
+<div class="flex justify-center">
+  <a href="https://www.flaticon.com/free-icons/server" title="server icons" class="opacity-20 text-[8px]">
+    Server icons created by RaftelDesign - Flaticon
+  </a>
+</div>
+
+<br>
+
+<div class="flex justify-center text-3xl">
+  雲端
+</div>
+
+<br>
+<br>
+
+<div class="flex justify-center">
+  <img
+    class="w-15 mr-2"
+    src="/gcp.svg"
+    alt=""
+  />
+  <img
+    class="w-15 mx-2"
+    src="/aws.svg"
+    alt=""
+  />
+  <img
+    class="w-15 mx-2"
+    src="/azure.svg"
+    alt=""
+  />
+  <img
+    class="w-25 ml-12"
+    src="/render.svg"
+    alt=""
+  />
+</div>
+
+<br>
+<br>
+
+<div class="flex justify-left">
+  <img
+    class="w-15 ml-16 mr-4"
+    src="/docker.svg"
+    alt=""
+  />
+  <img
+    class="w-15 mx-4"
+    src="/tmux.svg"
+    alt=""
+  />
+</div>
+
+---
+class: flex justify-center items-center
+
+---
+
+# 應用
 
 ---
 
