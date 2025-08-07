@@ -1118,6 +1118,8 @@ layout: two-cols
 <br>
 <br>
 
+<v-click>
+
 <div class="flex justify-center">
   <img
     class="w-15 mr-2"
@@ -1141,8 +1143,12 @@ layout: two-cols
   />
 </div>
 
+</v-click>
+
 <br>
 <br>
+
+<v-click>
 
 <div class="flex justify-left">
   <img
@@ -1156,6 +1162,8 @@ layout: two-cols
     alt=""
   />
 </div>
+
+</v-click>
 
 ---
 class: flex justify-center items-center
