@@ -4,6 +4,10 @@
 
 - 使用 [Slidev](https://sli.dev/) 製作
 
+## 分享
+
+- 2025.08.09 [COSCUP](https://coscup.org/2025/sessions/X8STXD) 用 Python 打造高互動性的 Discord BOT
+
 ## 如何使用
 ### 1. 安裝
 ```
